@@ -1,18 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout android:id="@+id/main_layout"
+              xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
-              android:id="@+id/main_layout"
               tools:context="com.frankdaijie.kotlinforpractise.MainActivity">
 
-    <Button
-        android:id="@+id/start_button"
-        android:text="Click to sync"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_sync"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sync data"/>
+
+        <Button
+            android:id="@+id/button_show_alert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show alert"/>
+
+        <Button
+            android:id="@+id/button_show_selector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show selector"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show Custom Alert"
+            android:id="@+id/button_show_custom_alert"/>
+    </LinearLayout>
+
+    <com.frankdaijie.kotlinforpractise.ui.CustomTextView
+        android:id="@+id/custom_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Custom Text View"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/forecast_list"
