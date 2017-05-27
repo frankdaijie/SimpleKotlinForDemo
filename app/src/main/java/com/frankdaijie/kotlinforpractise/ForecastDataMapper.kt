@@ -1,14 +1,15 @@
 package com.frankdaijie.kotlinforpractise
 
-import android.util.Log
+import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.debug
 import java.text.DateFormat
 import java.util.*
 
 /**
  */
-class ForecastDataMapper {
+class ForecastDataMapper: AnkoLogger {
 
-    public fun getForecastListFromResult(forecastResult: ForecastResult): ForecastList {
+    fun getForecastListFromResult(forecastResult: ForecastResult): ForecastList {
 
         return ForecastList(forecastResult.city.name,
                 forecastResult.city.country,
@@ -17,14 +18,15 @@ class ForecastDataMapper {
 
     private fun convertToList(list: List<ForecastItem>): List<Forecast> {
 
-        var newList = list.map { (dt, temp, _, _, weather) ->
+        val newList = list.map { (dt, temp, _, _, weather) ->
             Forecast(getDate(dt),
                     weather[0].description,
                     temp.max.toInt(),
                     temp.min.toInt())
         }
 
-        Log.d("ForecastDataMapper", newList.toString())
+        debug(newList.toString())
+
         return newList
     }
 

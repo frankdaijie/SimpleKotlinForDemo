@@ -31,6 +31,8 @@ class CustomLayoutActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val range: Int = intent.getIntExtra(ID_KEY, 100)
+
         verticalLayout {
             padding = dip(30)
             editText {
@@ -42,8 +44,20 @@ class CustomLayoutActivity : Activity() {
                 textSize = 24f
             }
             textView {
-                text = intent.getStringExtra(ID_KEY)
+
+                text = when(range) {
+                    in 1..3 -> {
+                        "Less than 3"
+                    }
+                    100 -> {
+                        "Default value"
+                    }
+                    else -> {
+                        "Range is $range"
+                    }
+                }
             }
+
             button("Login") {
                 textSize = 26f
             }
