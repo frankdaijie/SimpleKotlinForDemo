@@ -1,14 +1,20 @@
 package com.frankdaijie.kotlinforpractise
 
+import android.app.Activity
 import android.app.ProgressDialog
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.text.Editable
+import android.widget.Button
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : Activity() {
+
+    // Lazy delegate
+    val buttonShowSelector: Button by lazy {
+        find<Button>(R.id.button_show_selector)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,16 +22,10 @@ class MainActivity : AppCompatActivity() {
 
         forecast_list.layoutManager = LinearLayoutManager(this)
 
-        custom_textview.someCustomMethod()
-
         button_sync.setOnClickListener {
             toast("Start to get weather data")
+            val dialog: ProgressDialog = indeterminateProgressDialog("Fetching the data…")
             doAsync {
-                var dialog: ProgressDialog? = null
-
-                uiThread {
-                    dialog = indeterminateProgressDialog("Fetching the data…")
-                }
 
                 val result = ForecastRequest(ForecastRequest.CITY_BEIJING).execute()
 
@@ -42,16 +42,26 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        button_show_alert.setOnClickListener {
+        val buttonShowAlert = find<Button>(R.id.button_show_alert)
+        buttonShowAlert.setOnClickListener {
             showSampleAlert()
         }
 
-        button_show_selector.setOnClickListener {
+        buttonShowSelector.setOnClickListener {
             showSampleSelector()
         }
 
         button_show_custom_alert.setOnClickListener {
             createAndShowCustomLayoutAlert()
+        }
+
+        button_call_custom_method.setOnClickListener {
+            custom_textview.someCustomMethod()
+
+        }
+
+        button_goto.setOnClickListener {
+            CustomLayoutActivity.newInstance(this, 5)
         }
     }
 
@@ -80,6 +90,7 @@ class MainActivity : AppCompatActivity() {
                     val firstName = editText {
                         hint = "First name"
                     }
+
                     positiveButton("Register") { register(familyName.text, firstName.text) }
                 }
             }

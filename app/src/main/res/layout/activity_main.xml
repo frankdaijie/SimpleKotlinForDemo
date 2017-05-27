@@ -1,41 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout android:id="@+id/main_layout"
-              xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/main_layout"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
               tools:context="com.frankdaijie.kotlinforpractise.MainActivity">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button_sync"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sync data"/>
+
+            <Button
+                android:id="@+id/button_show_alert"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show alert"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_call_custom_method"
+                android:text="Call custom text view method"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button_show_selector"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show selector"/>
+
+            <Button
+                android:id="@+id/button_show_custom_alert"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show Custom Alert"/>
+
+        </LinearLayout>
 
         <Button
-            android:id="@+id/button_sync"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sync data"/>
-
-        <Button
-            android:id="@+id/button_show_alert"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Show alert"/>
-
-        <Button
-            android:id="@+id/button_show_selector"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Show selector"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Show Custom Alert"
-            android:id="@+id/button_show_custom_alert"/>
+            android:text="Go To Custom Layout Activity"
+            android:id="@+id/button_goto"/>
     </LinearLayout>
 
     <com.frankdaijie.kotlinforpractise.ui.CustomTextView
